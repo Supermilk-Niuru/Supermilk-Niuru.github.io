@@ -19,4 +19,7 @@ export default {
       },
     },
   ],
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
 };

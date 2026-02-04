@@ -1,8 +1,8 @@
 export const SITE = {
-  website: "https://supermilk-niuru-github-io.vercel.app/", // replace this with your deployed domain
+  website: "https://supermilk-niuru-github-io.vercel.app/", 
   author: "Supermilk-Niuru",
   profile: "https://satnaing.dev/",
-  desc: ".",
+  desc: "Niuru's Blog",
   title: "Niuru's Blog",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
@@ -12,9 +12,9 @@ export const SITE = {
   showArchives: true,
   showBackButton: true, 
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Edit page",
-    url: "https://github.com/satnaing/astro-paper/edit/main/",
+    url: "https://github.com/Supermilk-Niuru/Supermilk-Niuru.github.io/edit/main/",
   },
   dynamicOgImage: true,
   dir: "ltr", 

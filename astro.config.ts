@@ -1,4 +1,5 @@
 import { defineConfig, envField, fontProviders } from "astro/config";
+import remarkReadingTime from "./src/utils/remark-reading-time.mjs";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
@@ -20,7 +21,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    remarkPlugins: [remarkReadingTime,remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },

@@ -34,6 +34,8 @@ const {
   tags,
   hideEditPost,
 } = post.data;
+const {headings,remarkPluginFrontmatter } = await render(post);
+const readingTime = remarkPluginFrontmatter.readingTime;
 
 const { Content } = await render(post);
 
@@ -85,128 +87,162 @@ const nextPost =
 <Layout {...layoutProps}>
   <Header />
   <BackButton />
-  <main
-    id="main-content"
-    class:list={["app-layout pb-12", { "mt-8": !SITE.showBackButton }]}
-    data-pagefind-body
-  >
-    <h1
-      transition:name={slugifyStr(title.replaceAll(".", "-"))}
-      class="inline-block text-2xl font-bold text-accent sm:text-3xl"
-    >
-      {title}
-    </h1>
-    <div class="my-2 flex items-center gap-2">
-      <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
-      <span
-        aria-hidden="true"
-        class:list={[
-          "max-sm:hidden",
-          { hidden: !SITE.editPost.enabled || hideEditPost },
-        ]}>|</span
-      >
-      <EditPost {hideEditPost} {post} class="max-sm:hidden" />
-    </div>
-    <article
-      id="article"
-      class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
-    >
+<main id="main-content" class:list={["app-layout pb-12", { "mt-8": !SITE.showBackButton }]} data-pagefind-body>
+  <h1 transition:name={slugifyStr(title.replaceAll(".", "-"))} class="inline-block text-2xl font-bold text-accent sm:text-3xl">
+    {title}
+  </h1>
+
+  <div class="my-2 flex items-center gap-2">
+    <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" readingTime={readingTime} />
+    <span aria-hidden="true" class:list={["max-sm:hidden", { hidden: !SITE.editPost.enabled || hideEditPost }]}>|</span>
+    <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+  </div>
+
+  <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_240px] lg:items-start">
+    
+    <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)">
       <Content />
-    </article>
 
-    <hr class="my-8 border-dashed" />
+      <hr class="my-8 border-dashed" />
+      
+      <EditPost class="sm:hidden" {hideEditPost} {post} />
+      
+      <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8">
+        {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
+      </ul>
 
-    <EditPost class="sm:hidden" {hideEditPost} {post} />
+      <BackToTopButton />
 
-    <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8">
-      {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} size="sm" />)}
-    </ul>
+      <ShareLinks />
 
-    <BackToTopButton />
+      <hr class="my-6 border-dashed" />
 
-    <ShareLinks />
-
-    <hr class="my-6 border-dashed" />
-
-    <!-- Previous/Next Post Buttons -->
-    <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-      {
-        prevPost && (
-          <a
-            href={getPath(prevPost.id, prevPost.filePath)}
-            class="flex w-full gap-1 hover:opacity-75"
-          >
+      <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {prevPost && (
+          <a href={getPath(prevPost.id, prevPost.filePath)} class="flex w-full gap-1 hover:opacity-75">
             <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
             <div>
               <span>Previous Post</span>
               <div class="text-sm text-accent/85">{prevPost.title}</div>
             </div>
           </a>
-        )
-      }
-      {
-        nextPost && (
-          <a
-            href={getPath(nextPost.id, nextPost.filePath)}
-            class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
-          >
+        )}
+        {nextPost && (
+          <a href={getPath(nextPost.id, nextPost.filePath)} class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2">
             <div>
               <span>Next Post</span>
               <div class="text-sm text-accent/85">{nextPost.title}</div>
             </div>
             <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
           </a>
-        )
-      }
-    </div>
-  </main>
+        )}
+      </div>
+    </article>
+
+    {headings.length > 0 && (
+      <aside class="hidden lg:block sticky top-24 self-start mt-12 w-full max-w-[220px]">
+        <div class="relative pl-4">
+          <h2 class="text-xl font-bold text-foreground mb-6">目录</h2>
+          <nav class="relative">
+            <div class="absolute left-0 top-0 h-full w-[2px] bg-foreground/5"></div>
+            <ul class="flex flex-col gap-1">
+              {headings.map(heading => {
+                const isSubHeading = heading.depth > 2;
+                return (
+                  <li class="relative group">
+                    <a 
+                      href={`#${heading.slug}`} 
+                      class:list={[
+                        "toc-link block py-2 px-3 rounded-xl transition-all duration-200 text-[14px]",
+                        "hover:bg-foreground/5 hover:text-accent",
+                        isSubHeading ? "ml-4 text-foreground/70" : "font-medium text-foreground",
+                      ]}
+                    >
+                      <span class="absolute left-[-16px] top-1/4 h-1/2 w-[3px] rounded-full bg-accent opacity-0 transition-opacity group-hover:opacity-100"></span>
+                      {heading.text}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+      </aside>
+    )}
+  </div>
+</main>
   <Footer />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  /** Create a progress indicator
-   *  at the top */
+  /** 同时创建顶部进度条和右下角百分比容器 */
   function createProgressBar() {
-    // Create the main container div
+    
     const progressContainer = document.createElement("div");
-    progressContainer.className =
-      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
-
-    // Create the progress bar div
+    progressContainer.className = "progress-container fixed top-0 z-10 h-1 w-full bg-background";
     const progressBar = document.createElement("div");
     progressBar.className = "progress-bar h-1 w-0 bg-accent";
     progressBar.id = "myBar";
-
-    // Append the progress bar to the progress container
     progressContainer.appendChild(progressBar);
-
-    // Append the progress container to the document body or any other desired parent element
     document.body.appendChild(progressContainer);
+
+    
+    const percentContainer = document.createElement("div");
+    percentContainer.id = "percent-indicator";
+    
+    percentContainer.className = 
+      "fixed bottom-8 right-8 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-skin-card border border-skin-line shadow-xl text-sm font-mono font-bold text-accent opacity-0 transition-all duration-300 hover:scale-110";
+
+    const percentText = document.createElement("span");
+    percentText.id = "percent-text";
+    percentText.innerText = "0%";
+
+    percentContainer.appendChild(percentText);
+    document.body.appendChild(percentContainer);
+
+    
+    percentContainer.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
   createProgressBar();
 
-  /** Update the progress bar
-   *  when user scrolls */
   function updateScrollProgress() {
     document.addEventListener("scroll", () => {
-      const winScroll =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      const height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      if (document) {
-        const myBar = document.getElementById("myBar");
-        if (myBar) {
-          myBar.style.width = scrolled + "%";
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      const roundedScrolled = Math.round(scrolled);
+
+      const myBar = document.getElementById("myBar");
+      if (myBar) myBar.style.width = scrolled + "%";
+
+      const percentText = document.getElementById("percent-text");
+      const percentContainer = document.getElementById("percent-indicator");
+      
+      if (percentText && percentContainer) {
+        
+        if (roundedScrolled >= 100) {
+          
+          percentText.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>`;
+        } else {
+          percentText.innerText = roundedScrolled + "%";
+        }
+        
+        
+        if (roundedScrolled > 5) {
+          percentContainer.classList.replace("opacity-0", "opacity-100");
+        } else {
+          percentContainer.classList.replace("opacity-100", "opacity-0");
         }
       }
     });
   }
   updateScrollProgress();
-
-  /** Attaches links to headings in the document,
-   *  allowing sharing of sections easily */
+  
   function addHeadingLinks() {
     const headings = Array.from(
       document.querySelectorAll("h2, h3, h4, h5, h6")
@@ -227,8 +263,7 @@ const nextPost =
   }
   addHeadingLinks();
 
-  /** Attaches copy buttons to code blocks in the document,
-   * allowing users to copy code easily. */
+  /** 给代码块附加复制按钮（保留原功能） */
   function attachCopyButtons() {
     const copyButtonLabel = "Copy";
     const codeBlocks = Array.from(document.querySelectorAll("pre"));
@@ -237,12 +272,10 @@ const nextPost =
       const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
 
-      // Check if --file-name-offset custom property exists
       const computedStyle = getComputedStyle(codeBlock);
       const hasFileNameOffset =
         computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
 
-      // Determine the top positioning class
       const topClass = hasFileNameOffset
         ? "top-(--file-name-offset)"
         : "-top-3";
@@ -252,8 +285,6 @@ const nextPost =
       copyButton.innerHTML = copyButtonLabel;
       codeBlock.setAttribute("tabindex", "0");
       codeBlock.appendChild(copyButton);
-
-      // wrap codebock with relative parent element
       codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
       wrapper.appendChild(codeBlock);
 
@@ -265,12 +296,8 @@ const nextPost =
     async function copyCode(block, button) {
       const code = block.querySelector("code");
       const text = code?.innerText;
-
       await navigator.clipboard.writeText(text ?? "");
-
-      // visual feedback that task is completed
       button.innerText = "Copied";
-
       setTimeout(() => {
         button.innerText = copyButtonLabel;
       }, 700);
@@ -278,7 +305,6 @@ const nextPost =
   }
   attachCopyButtons();
 
-  /* Go to page start after page swap */
   document.addEventListener("astro:after-swap", () =>
     window.scrollTo({ left: 0, top: 0, behavior: "instant" })
   );

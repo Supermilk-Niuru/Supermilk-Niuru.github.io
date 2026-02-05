@@ -5,7 +5,7 @@ export default function remarkReadingTime() {
   return function (tree, { data }) {
     const textOnPage = toString(tree);
     const readingTime = getReadingTime(textOnPage);
-    data.astro.clientAddress = ""; 
+    //data.astro.clientAddress = ""; 
     data.astro.frontmatter.readingTime = readingTime.text;
   };
 }

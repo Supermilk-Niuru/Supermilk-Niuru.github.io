@@ -11,13 +11,14 @@ html[data-theme="light"] {
   --muted: #e6e6e6;
   --border: #ece9e9;
 }
+:target { scroll-margin-top: 6rem; }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
+  --background: #0B0B10;
+  --foreground: #e6edf3;
+  --accent: #58a6ff;
+  --muted: #161b22;
+  --border: #30363d;
 }
 
 @theme inline {
@@ -68,3 +69,4 @@ html[data-theme="dark"] {
 :target {
   scroll-margin-block: 1rem;
 }
+

@@ -55,27 +55,30 @@ const footerLink1 = footerConf.links?.filter(({ pos }) => pos === 1) || []
           }
         </div>
         {
-          footerConf.credits && (
-            <span>
-              <a href='https://github.com/withastro/astro' target='_blank'>Astro</a>
-              &
-              <a href='https://github.com/cworld1/astro-theme-pure' target='_blank'>Pure</a>
-              theme powered
-            </span>
-          )
-        }
+  footerConf.credits && (
+    <span>
+      Powered by 
+      <a href='https://github.com/Supermilk-Niuru' target='_blank'>Supermilk-Niuru</a>
+    </span>
+  )
+}
       </div>
 
       {/* Social Brands */}
       <div class='flex items-center gap-x-4'>
         {
           footerConf.social &&
-            Object.entries(footerConf.social).map(([platform, { label, url }]) => (
-              <a href={url} aria-label={label}>
-                <Icon name={platform as keyof typeof footerConf.social} />
+    Object.entries(footerConf.social).map(([platform, value]) => {
+      
+    const url = typeof value === 'string' ? value : value.url
+      const label = typeof value === 'string' ? platform : value.label
+      return (
+        <a href={url} aria-label={label} target='_blank'>
+          <Icon name={platform as any} />
               </a>
-            ))
-        }
+            )
+        })
+      }
       </div>
     </div>
   </div>

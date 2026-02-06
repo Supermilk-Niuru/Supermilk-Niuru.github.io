@@ -1,5 +1,5 @@
 {
-  "name": "astro-theme-pure",
+  "name": "Supermilk-Niuru",
   "workspaces": [
     "packages/*"
   ],
@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:check": "astro check --watch & astro dev",
-    "build": "astro-pure check && astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "sync": "astro sync",
     "check": "astro check",
@@ -16,22 +16,26 @@
     "pure": "astro-pure",
     "format": "prettier --write  '**/*.{js,jsx,ts,tsx,md,mdx,astro}'",
     "lint": "eslint --fix 'src/**/*.{js,ts,jsx,tsx,astro}'",
-    "yijiansilian": "bun lint && bun sync && bun check && bun format",
-    "clean": "rm -rf .astro .vercel dist",
-    "cache:avatars": "tsx preset/scripts/cacheAvatars.ts"
+    "clean": "rm -rf .astro .vercel dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
+    "@astrojs/markdown-remark": "^6.3.10",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/vercel": "^9.0.2",
+    "@unocss/reset": "^66.6.0",
     "@waline/client": "^3.8.0",
     "astro": "^5.16.6",
     "astro-pure": "1.4.0",
+    "hastscript": "^9.0.1",
     "katex": "^0.16.27",
+    "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^7.0.1",
+    "rehype-slug": "^6.0.0",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.5",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",

@@ -3,9 +3,9 @@ import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } fro
 export const theme: ThemeUserConfig = {
   // [Basic]
   /** Title for your website. Will be used in metadata and as browser tab title. */
-  title: 'Astro Theme Pure',
+  title: "Niuru's blog",
   /** Will be used in index page & copyright declaration */
-  author: 'Pure Lab',
+  author: "Supermilk-Niuru",
   /** Description metadata for your website. Can be used in page metadata. */
   description: 'Stay hungry, stay foolish',
   /** The default favicon for your site which should be a path to an image in the `public/` directory. */
@@ -15,7 +15,7 @@ export const theme: ThemeUserConfig = {
   /** Specify the default language for this site. */
   locale: {
     lang: 'en-US',
-    attrs: 'en_US',
+    attrs: 'en-US',
     // Date locale
     dateLocale: 'en-US',
     dateOptions: {
@@ -27,7 +27,7 @@ export const theme: ThemeUserConfig = {
   /** Set a logo image to show in the homepage. */
   logo: {
     src: '/src/assets/avatar.png',
-    alt: 'Avatar'
+    alt: 'Supermilk-Niuru'
   },
 
   titleDelimiter: '•',
@@ -64,21 +64,15 @@ export const theme: ThemeUserConfig = {
     links: [
       // Registration link
       {
-        title: 'Moe ICP 114514',
-        link: 'https://icp.gov.moe/?keyword=114514',
+        title: 'Github',
+        link: 'https://github.com/Supermilk-Niuru',
         style: 'text-sm' // Uno/TW CSS class
       },
-      // Privacy Policy link
-      {
-        title: 'Site Policy',
-        link: '/terms/list',
-        pos: 2 // position set to 2 will be appended to copyright line
-      }
     ],
     /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
     credits: true,
     /** Optional details about the social media accounts for this site. */
-    social: { github: 'https://github.com/cworld1/astro-theme-pure' }
+    social: { github: 'https://github.com/Supermilk-Niuru' }
   },
 
   // [Content]
@@ -159,7 +153,7 @@ export const integ: IntegrationUserConfig = {
   },
   // Comment system
   waline: {
-    enable: true,
+    enable: false,
     // Server service link
     server: 'https://astro-theme-pure-waline.arthals.ink/',
     // Show meta info for comments

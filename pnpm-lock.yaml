@@ -31,13 +31,16 @@ importers:
         version: 5.17.1(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2)
       astro-pure:
         specifier: 1.4.0
-        version: 1.4.0(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@4.57.1)(typescript@5.9.3)(vite@6.4.1(jiti@2.6.1)(yaml@2.8.2))(yaml@2.8.2)
+        version: 1.4.0(@vercel/functions@2.2.13)(jiti@2.6.1)(postcss@8.5.6)(rollup@4.57.1)(typescript@5.9.3)(vite@6.4.1(jiti@2.6.1)(yaml@2.8.2))(yaml@2.8.2)
       hastscript:
         specifier: ^9.0.1
         version: 9.0.1
       katex:
         specifier: ^0.16.27
         version: 0.16.28
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
       rehype-autolink-headings:
         specifier: ^7.1.0
         version: 7.1.0
@@ -47,6 +50,9 @@ importers:
       rehype-slug:
         specifier: ^6.0.0
         version: 6.0.0
+      rehype-stringify:
+        specifier: ^10.0.1
+        version: 10.0.1
       remark-math:
         specifier: ^6.0.0
         version: 6.0.0
@@ -4377,7 +4383,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-pure@1.4.0(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@4.57.1)(typescript@5.9.3)(vite@6.4.1(jiti@2.6.1)(yaml@2.8.2))(yaml@2.8.2):
+  astro-pure@1.4.0(@vercel/functions@2.2.13)(jiti@2.6.1)(postcss@8.5.6)(rollup@4.57.1)(typescript@5.9.3)(vite@6.4.1(jiti@2.6.1)(yaml@2.8.2))(yaml@2.8.2):
     dependencies:
       '@astrojs/mdx': 4.3.13(astro@5.17.1(@vercel/functions@2.2.13)(jiti@2.6.1)(rollup@4.57.1)(typescript@5.9.3)(yaml@2.8.2))
       '@astrojs/sitemap': 3.7.0

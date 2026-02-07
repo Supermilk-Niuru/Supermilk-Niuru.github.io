@@ -40,7 +40,11 @@
     "sharp": "^0.34.5",
     "typescript": "^5.9.3",
     "unified": "^11.0.5",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.1.0",
+    "remark-parse": "^11.0.0",
+  "remark-rehype": "^11.1.2",
+  "rehype-stringify": "^10.0.1",
+  "unified": "^11.0.5"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",

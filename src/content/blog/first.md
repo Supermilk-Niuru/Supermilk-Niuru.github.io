@@ -1,9 +1,9 @@
 ---
-title: "我的第一篇文章"
-description: "这是我清理博客后的新开始"
-publishDate: "2026-02-06"
-tags: ["生活"]
+title: "我的第一篇博客"
+publishDate: "2026-02-07"
+description: "测试部署是否成功"
+tags: ["test"]
 ---
 
-### Hello World
-这是我的第一篇正式博文！
+## 欢迎来到我的博客
+

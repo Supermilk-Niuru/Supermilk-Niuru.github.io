@@ -23,12 +23,12 @@ if (!images[imagePath])
   )
 ---
 
-<PageLayout meta={{ title: '首页' }} highlightColor='#659EB9'>
+<PageLayout meta={{ title: 'Home', description: "Supermilk-Niuru's personal blog" }} highlightColor='#659EB9'>
   <main class='flex w-full flex-col items-center'>
     <section class='animate mb-10 flex flex-col items-center gap-y-7' id='content-header'>
       <Image
         src={images[imagePath]()}
-        alt={config.logo.alt || '头像'}
+        alt={config.logo.alt || 'Avatar'}
         class='h-28 w-auto rounded-full border p-1'
         loading='eager'
         fetchpriority='high'
@@ -37,7 +37,7 @@ if (!images[imagePath])
       <div class='flex flex-col items-center gap-y-4'>
         <h1 class='text-3xl font-medium'>{config.author}</h1>
         <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
-          <Label title='中国'>
+          <Label title='China'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
           <Label
@@ -53,36 +53,36 @@ if (!images[imagePath])
     </section>
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
-      <Section title='关于'>
-        <p class='text-muted-foreground'>学生 @CCNU</p>
+      <Section title='About'>
+        <p class='text-muted-foreground'>Student @CCNU</p>
         <p class='text-muted-foreground'>
-          华中师范大学计算机专业本科生
+          Undergraduate student in Computer Science at Central China Normal University
         </p>
         <p class='text-muted-foreground'>
-          白天不要做梦，晚上不要做白日梦
+          Don't dream during the day, don't daydream at night
         </p>
-        <Button title='了解更多' class='w-fit self-end' href='/about' variant='ahead' />
+        <Button title='Learn more' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
 
-      <Section title='教育经历'>
+      <Section title='Education'>
         <Card
           as='a'
-          heading='华中师范大学'
-          subheading='计算机类，本科'
-          date='2025年9月 - 至今'
+          heading='Central China Normal University'
+          subheading='Computer Science, Bachelor'
+          date='Sep 2025 - Present'
           href='https://cs.ccnu.edu.cn/'
         />
       </Section>
 
-      <Section title='统计'>
+      <Section title='Statistics'>
         <div class='grid grid-cols-2 gap-4 sm:grid-cols-4'>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
             <span class='text-2xl font-bold text-primary'>365+</span>
-            <span class='text-sm text-muted-foreground'>在线天数</span>
+            <span class='text-sm text-muted-foreground'>Days Online</span>
           </div>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
-            <span class='text-2xl font-bold text-primary'>更新中</span>
-            <span class='text-sm text-muted-foreground'>最后更新</span>
+            <span class='text-2xl font-bold text-primary'>Updating</span>
+            <span class='text-sm text-muted-foreground'>Last Updated</span>
           </div>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
             <span class='text-2xl font-bold text-primary'>
@@ -90,18 +90,18 @@ if (!images[imagePath])
                 ? Math.floor(allPosts.reduce((acc, p) => acc + (p.body ? p.body.length : 0), 0) / 10000) + 'w+'
                 : allPosts.reduce((acc, p) => acc + (p.body ? p.body.length : 0), 0) + '+'}
             </span>
-            <span class='text-sm text-muted-foreground'>总字数</span>
+            <span class='text-sm text-muted-foreground'>Total Words</span>
           </div>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
             <span class='text-2xl font-bold text-primary'>{allPosts.length}</span>
-            <span class='text-sm text-muted-foreground'>文章总数</span>
+            <span class='text-sm text-muted-foreground'>Total Posts</span>
           </div>
         </div>
       </Section>
 
       {
         allPostsByDate.length > 0 && (
-          <Section title='最新文章'>
+          <Section title='Latest Posts'>
             <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
               {allPostsByDate.map((p) => (
                 <li class='flex flex-col gap-x-2 sm:flex-row'>
@@ -109,7 +109,7 @@ if (!images[imagePath])
                 </li>
               ))}
             </ul>
-            <Button title='查看全部' class='w-fit self-end' href='/blog' variant='ahead' />
+            <Button title='View all' class='w-fit self-end' href='/blog' variant='ahead' />
           </Section>
         )
       }

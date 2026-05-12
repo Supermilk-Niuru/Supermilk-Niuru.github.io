@@ -1,0 +1,59 @@
+---
+import links from 'public/links.json'
+
+import { Button, Card, Collapse, Timeline } from 'astro-pure/user'
+import FriendList from '@/components/links/FriendList.astro'
+import PageLayout from '@/layouts/BaseLayout.astro'
+import config from 'virtual:config'
+
+const { friends } = links
+const linksConf = config.integ.links
+
+const meta = {
+  description: 'Friends and links',
+  title: 'Links'
+}
+---
+
+<PageLayout {meta}>
+  <Button title='Back to Home' href='/' variant='back' />
+
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 text-3xl font-medium'>Links</h1>
+    </div>
+
+    <div id='content' class='animate flex flex-col gap-y-12'>
+      <section>
+        <h2 class='mb-4 text-2xl font-medium'>Common Links</h2>
+        <FriendList list={friends[0]} />
+      </section>
+
+      <Collapse title='Inactive Links'>
+        <FriendList list={friends[1]} />
+      </Collapse>
+
+      <Collapse title='Link History'>
+        <Timeline events={linksConf.logbook} />
+      </Collapse>
+
+      <section>
+        <h2 class='mb-4 text-2xl font-medium'>Special Links</h2>
+        <FriendList list={friends[2]} />
+      </section>
+
+      <section>
+        <h2 class='mb-4 text-2xl font-medium'>Apply for Link</h2>
+        <Card heading='Requirements'>
+          <ol class='list-inside list-decimal space-y-1 text-muted-foreground'>
+            <li>Your website must have original content</li>
+            <li>Your website must be accessible stably for a long time</li>
+            <li>No illegal or prohibited content</li>
+            <li>Friendly and non-aggressive</li>
+            <li>Add my link first, then apply</li>
+          </ol>
+        </Card>
+      </section>
+    </div>
+  </main>
+</PageLayout>

@@ -1,0 +1,18 @@
+---
+const currentPath = Astro.url.pathname
+const isEnglish = currentPath.startsWith('/en')
+const targetPath = isEnglish
+  ? currentPath.replace(/^\/en/, '') || '/'
+  : '/en' + (currentPath === '/' ? '' : currentPath)
+const label = isEnglish ? '中' : 'EN'
+const title = isEnglish ? 'Switch to Chinese' : 'Switch to English'
+---
+
+<a
+  href={targetPath}
+  title={title}
+  id="language-switcher"
+  class="box-content flex size-5 items-center justify-center rounded-md border p-1.5 transition-colors hover:bg-border text-xs font-medium leading-none sm:group-[.not-top]:rounded-xl"
+>
+  {label}
+</a>

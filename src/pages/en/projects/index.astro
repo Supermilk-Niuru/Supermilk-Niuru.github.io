@@ -1,0 +1,38 @@
+---
+import { Button, Card, Icon } from 'astro-pure/user'
+import ProjectSection from '@/components/projects/ProjectSection.astro'
+import Sponsors from '@/components/projects/Sponsors.astro'
+import PageLayout from '@/layouts/BaseLayout.astro'
+
+const meta = {
+  description: 'My projects',
+  title: 'Projects'
+}
+---
+
+<PageLayout {meta}>
+  <Button title='Back to Home' href='/' variant='back' />
+
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 text-3xl font-medium'>Projects</h1>
+    </div>
+
+    <div id='content' class='animate flex flex-col gap-y-12'>
+      <ProjectSection
+        projects={[
+          {
+            name: 'My Blog',
+            description: 'Personal blog built with Astro & astro-pure',
+            links: [
+              { type: 'github', href: 'https://github.com/Supermilk-Niuru/My-blog' },
+              { type: 'site', href: 'https://my-blog-six-nu.vercel.app/' },
+            ]
+          },
+        ]}
+      />
+
+      <Sponsors sponsors={[]} />
+    </div>
+  </main>
+</PageLayout>

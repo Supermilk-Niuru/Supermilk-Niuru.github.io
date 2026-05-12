@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL https://axi404.top/)",
+      "Bash(curl -sL https://axi404.top/styles/global.css)",
+      "Bash(curl -sL https://raw.githubusercontent.com/Axi404/axi404.github.io/main/about/index.html)",
+      "Bash(curl -sL https://raw.githubusercontent.com/Axi404/axi404.github.io/main/blog/index.html)",
+      "Bash(curl -sL https://axi404.top/about/)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm run *)",
+      "WebFetch(domain:axi404.top)",
+      "Bash(mkdir -p /Users/supermilk/code/My-blog/src/pages/en/tags/\\\\[tag\\\\])",
+      "Bash(xxd)"
+    ],
+    "additionalDirectories": [
+      "/Users/supermilk/code/My-blog/src/pages/en/tags"
+    ]
+  }
+}

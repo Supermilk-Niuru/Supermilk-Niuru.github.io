@@ -5,51 +5,74 @@ import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
 
 const headings = [
-  { depth: 2, slug: 'tools', text: '工具' },
-  { depth: 2, slug: 'social-networks', text: '社交' },
+  { depth: 2, slug: 'about', text: '关于我' },
+  { depth: 2, slug: 'tools', text: '常用工具' },
+  { depth: 2, slug: 'social-networks', text: '社交网络' },
 ]
 ---
 
-<PageLayout title='About' {headings} comment>
-  <p> 学生/ <Spoiler>爱喝牛乳的牛乳🥛</Spoiler> </p>
+<PageLayout title='关于' {headings} comment>
+  <h2 id='about'>关于我</h2>
+  <p> 学生 / <Spoiler>爱喝牛乳的牛乳🥛</Spoiler> </p>
   <p>
     我是「牛乳」，华中师范大学(CCNU)计算机学院一名本科生
   </p>
   <p>
-    白天不要做梦，晚上不要做白日梦 
+    白天不要做梦，晚上不要做白日梦
   </p>
-  <Button title='Sponsor Me' class='w-fit' href='/projects#sponsorship' variant='ahead' />
+  <p>
+    兴趣广泛，热爱编程、写作、折腾各种新奇的技术和工具。
+  </p>
+  <Button title='赞助我' class='w-fit' href='/projects#sponsorship' variant='ahead' />
 
-  {/* general-talk */}
-  <h2> 工具 </h2>
+  <h2 id='tools'>常用工具</h2>
   <ToolSection
     class='mb-5'
-    title='Productivity'
+    title='开发工具'
     tools={[
       {
-        name: 'MacOS',
-        description: 'MacBook Air',
+        name: 'macOS',
+        description: '操作系统',
         href: 'https://www.apple.com/macos/',
         icon: import('@/assets/tools/apple.svg?raw')
       },
       {
         name: 'Chrome',
-        description: 'Browser',
+        description: '浏览器',
         href: 'https://www.google.com/chrome/',
         icon: import('@/assets/tools/chrome.svg?raw')
       },
       {
         name: 'VS Code',
-        description: 'IDE',
+        description: '编辑器',
         href: 'https://code.visualstudio.com/',
         icon: import('@/assets/tools/vscode.svg?raw')
       },
       {
+        name: 'Neovim',
+        description: '编辑器',
+        href: 'https://neovim.io/',
+        icon: import('@/assets/tools/neovim.svg?raw')
+      },
+      {
         name: 'Gemini',
-        description: 'AI Model',
+        description: 'AI 助手',
         href: 'https://gemini.google.com/',
-        icon: import('@/assets/tools/gemini.svg?raw') 
+        icon: import('@/assets/tools/gemini.svg?raw')
+      },
+      {
+        name: 'Notion',
+        description: '笔记',
+        href: 'https://www.notion.so/',
+        icon: import('@/assets/tools/notion.svg?raw')
       },
     ]}
   />
+
+  <h2 id='social-networks'>社交网络</h2>
+  <p>你可以在以下平台找到我：</p>
+  <ul>
+    <li><a href='https://github.com/Supermilk-Niuru' target='_blank'>GitHub</a></li>
+  </ul>
+  <p>欢迎通过邮件联系我：<code>supermilk@example.com</code></p>
 </PageLayout>

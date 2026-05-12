@@ -1,22 +1,15 @@
 import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types'
 
 export const theme: ThemeUserConfig = {
-  // [Basic]
-  /** Title for your website. Will be used in metadata and as browser tab title. */
   title: "Niuru's blog",
-  /** Will be used in index page & copyright declaration */
-  author: "Supermilk-Niuru",
-  /** Description metadata for your website. Can be used in page metadata. */
+  author: 'Supermilk-Niuru',
   description: 'Stay hungry, stay foolish',
-  /** The default favicon for your site which should be a path to an image in the `public/` directory. */
   favicon: '/favicon/favicon.ico',
-  /** The default social card image for your site which should be a path to an image in the `public/` directory. */
   socialCard: '/images/social-card.png',
-  /** Specify the default language for this site. */
+
   locale: {
     lang: 'en-US',
     attrs: 'en-US',
-    // Date locale
     dateLocale: 'en-US',
     dateOptions: {
       day: 'numeric',
@@ -24,150 +17,93 @@ export const theme: ThemeUserConfig = {
       year: 'numeric'
     }
   },
-  /** Set a logo image to show in the homepage. */
+
   logo: {
     src: '/src/assets/avatar.png',
     alt: 'Supermilk-Niuru'
   },
 
   titleDelimiter: '•',
-  prerender: true, // pagefind search is not supported with prerendering disabled
+  prerender: true,
   npmCDN: 'https://cdn.jsdelivr.net/npm',
 
-  // Still in test
-  head: [
-    /* Telegram channel */
-    // {
-    //   tag: 'meta',
-    //   attrs: { name: 'telegram:channel', content: '@cworld0_cn' },
-    //   content: ''
-    // }
-  ],
-  customCss: [],
-
-  /** Configure the header of your site. */
   header: {
     menu: [
+      { title: 'Home', link: '/' },
       { title: 'Blog', link: '/blog' },
-      { title: 'Docs', link: '/docs' },
       { title: 'Projects', link: '/projects' },
       { title: 'Links', link: '/links' },
       { title: 'About', link: '/about' }
     ]
   },
 
-  /** Configure the footer of your site. */
   footer: {
-    // Year format
     year: `© ${new Date().getFullYear()}`,
-    // year: `© 2019 - ${new Date().getFullYear()}`,
     links: [
-      // Registration link
       {
-        title: 'Github',
+        title: 'GitHub',
         link: 'https://github.com/Supermilk-Niuru',
-        style: 'text-sm' // Uno/TW CSS class
-      },
+        style: 'text-sm'
+      }
     ],
-    /** Enable displaying a “Astro & Pure theme powered” link in your site’s footer. */
     credits: true,
-    /** Optional details about the social media accounts for this site. */
     social: { github: 'https://github.com/Supermilk-Niuru' }
   },
 
-  // [Content]
   content: {
-    /** External links configuration */
     externalLinks: {
       content: ' ↗',
-      /** Properties for the external links element */
-      properties: {
-        style: 'user-select:none'
-      }
+      properties: { style: 'user-select:none' }
     },
-    /** Blog page size for pagination (optional) */
     blogPageSize: 8,
-    // Currently support weibo, x, bluesky
     share: ['weibo', 'x', 'bluesky']
   }
 }
 
 export const integ: IntegrationUserConfig = {
-  // [Links]
-  // https://astro-pure.js.org/docs/integrations/links
   links: {
-    // Friend logbook
     logbook: [
-      { date: '2025-03-16', content: 'Is there a leakage?' },
-      { date: '2025-03-16', content: 'A leakage of what?' },
-      { date: '2025-03-16', content: 'I have a full seat of water, like, full of water!' },
-      { date: '2025-03-16', content: 'Must be the water.' },
-      { date: '2025-03-16', content: "Let's add that to the words of wisdom." }
+      { date: '2025-03-16', content: '欢迎来到我的博客！' }
     ],
-    // Yourself link info
     applyTip: [
-      { name: 'Name', val: theme.title },
-      { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://astro-pure.js.org/' },
-      { name: 'Avatar', val: 'https://astro-pure.js.org/favicon/favicon.ico' }
+      { name: '名称', val: theme.title },
+      { name: '描述', val: theme.description || 'Null' },
+      { name: '链接', val: 'https://my-blog-six-nu.vercel.app/' },
+      { name: '头像', val: 'https://my-blog-six-nu.vercel.app/favicon/favicon.ico' }
     ],
-    // Cache avatars in `public/avatars/` to improve user experience.
     cacheAvatar: false
   },
-  // [Search]
+
   pagefind: true,
-  // Add a random quote to the footer (default on homepage footer)
-  // See: https://astro-pure.js.org/docs/integrations/advanced#web-content-render
-  // [Quote]
+
   quote: {
-    // - Hitokoto
-    // https://developer.hitokoto.cn/sentence/#%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80
-    // server: 'https://v1.hitokoto.cn/?c=i',
-    // target: `(data) => (data.hitokoto || 'Error')`
-    // - Quoteable
-    // https://github.com/lukePeavey/quotable
-    // server: 'http://api.quotable.io/quotes/random?maxLength=60',
-    // target: `(data) => data[0].content || 'Error'`
-    // - DummyJSON
     server: 'https://dummyjson.com/quotes/random',
     target: `(data) => (data.quote.length > 80 ? \`\${data.quote.slice(0, 80)}...\` : data.quote || 'Error')`
   },
-  // [Typography]
-  // https://unocss.dev/presets/typography
+
   typography: {
     class: 'prose text-base',
-    // The style of blockquote font `normal` / `italic` (default to italic in typography)
     blockquoteStyle: 'italic',
-    // The style of inline code block `code` / `modern` (default to code in typography)
     inlineCodeBlockStyle: 'modern'
   },
-  // [Lightbox]
-  // A lightbox library that can add zoom effect
-  // https://astro-pure.js.org/docs/integrations/others#medium-zoom
+
   mediumZoom: {
-    enable: true, // disable it will not load the whole library
+    enable: true,
     selector: '.prose .zoomable',
-    options: {
-      className: 'zoomable'
-    }
+    options: { className: 'zoomable' }
   },
-  // Comment system
+
   waline: {
     enable: false,
-    // Server service link
     server: 'https://astro-theme-pure-waline.arthals.ink/',
-    // Show meta info for comments
     showMeta: false,
-    // Refer https://waline.js.org/en/guide/features/emoji.html
     emoji: ['bmoji', 'weibo'],
-    // Refer https://waline.js.org/en/reference/client/props.html
     additionalConfigs: {
-      // search: false,
       pageview: true,
       comment: true,
       locale: {
         reaction0: 'Like',
-        placeholder: 'Welcome to comment. (Email to receive replies. Login is unnecessary)'
+        placeholder: '欢迎留言（填写邮箱可接收回复通知，无需登录）'
       },
       imageUploader: false
     }
@@ -175,24 +111,12 @@ export const integ: IntegrationUserConfig = {
 }
 
 export const terms: CardListData = {
-  title: 'Terms content',
+  title: '站点条款',
   list: [
-    {
-      title: 'Privacy Policy',
-      link: '/terms/privacy-policy'
-    },
-    {
-      title: 'Terms and Conditions',
-      link: '/terms/terms-and-conditions'
-    },
-    {
-      title: 'Copyright',
-      link: '/terms/copyright'
-    },
-    {
-      title: 'Disclaimer',
-      link: '/terms/disclaimer'
-    }
+    { title: '隐私政策', link: '/terms/privacy-policy' },
+    { title: '服务条款', link: '/terms/terms-and-conditions' },
+    { title: '版权声明', link: '/terms/copyright' },
+    { title: '免责声明', link: '/terms/disclaimer' }
   ]
 }
 

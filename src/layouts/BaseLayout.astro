@@ -2,6 +2,7 @@
 import { Footer, Header, ThemeProvider } from 'astro-pure/components/basic'
 import type { SiteMeta } from 'astro-pure/types'
 import BaseHead from '@/components/BaseHead.astro'
+import LanguageSwitcher from '@/components/LanguageSwitcher.astro'
 import config from '@/site-config'
 
 // Import the global.css file here so that it is included on
@@ -19,9 +20,14 @@ const {
   highlightColor,
   ...props
 } = Astro.props
+
+// Detect language from path for English pages
+const currentPath = Astro.url.pathname
+const isEnglish = currentPath.startsWith('/en')
+const htmlLang = isEnglish ? 'en' : config.locale.lang
 ---
 
-<html lang={config.locale.lang}>
+<html lang={htmlLang}>
   <head>
     <BaseHead {articleDate} {description} {ogImage} {title} />
     <ThemeProvider />
@@ -42,6 +48,9 @@ const {
       class='w-full max-w-[70rem] min-h-[100dvh] flex flex-col justify-between'
     >
       <Header />
+      <div id="language-switcher-mount" class="hidden">
+        <LanguageSwitcher />
+      </div>
       <div class='flex-1 w-full'>
         <slot />
       </div>
@@ -87,5 +96,42 @@ const {
         }
       }
     </style>
+
+    <script>
+      // Move LanguageSwitcher into header, left of dark mode toggle
+      const langMount = document.getElementById('language-switcher-mount')
+      const langBtn = langMount?.querySelector('#language-switcher')
+      const darkModeBtn = document.getElementById('toggleDarkMode')
+      if (langBtn && darkModeBtn && darkModeBtn.parentElement) {
+        darkModeBtn.parentElement.insertBefore(langBtn, darkModeBtn)
+        langMount?.remove()
+      }
+
+      // Make nav links language-aware: on English pages, prefix with /en
+      if (window.location.pathname.startsWith('/en')) {
+        const headerExpand = document.getElementById('headerExpandContent')
+        if (headerExpand) {
+          const navLinks = headerExpand.querySelectorAll('a[aria-label="Nav menu item"]')
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href')
+            if (href && href !== '/' && !href.startsWith('/en')) {
+              link.setAttribute('href', '/en' + href)
+            }
+          })
+          const searchLink = headerExpand.querySelector('a[title="Search"]')
+          if (searchLink) {
+            const href = searchLink.getAttribute('href')
+            if (href && !href.startsWith('/en')) {
+              searchLink.setAttribute('href', '/en' + href)
+            }
+          }
+        }
+        // Update brand link to point to English homepage
+        const brandLink = document.querySelector('header-component a[aria-label="Brand"]')
+        if (brandLink && brandLink.getAttribute('href') === '/') {
+          brandLink.setAttribute('href', '/en/')
+        }
+      }
+    </script>
   </body>
 </html>

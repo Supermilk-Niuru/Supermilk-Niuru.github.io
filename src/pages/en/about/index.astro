@@ -1,85 +1,78 @@
 ---
-import { Button } from 'astro-pure/user'
+import { Button, Collapse, Spoiler, Timeline } from 'astro-pure/user'
+import PageLayout from '@/layouts/CommonPage.astro'
+import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
-import PageLayout from '@/layouts/BaseLayout.astro'
 
-const meta = {
-  description: 'About me and my blog',
-  title: 'About'
-}
+const headings = [
+  { depth: 2, slug: 'about', text: 'About Me' },
+  { depth: 2, slug: 'tools', text: 'Tools' },
+  { depth: 2, slug: 'social-networks', text: 'Social Networks' },
+]
 ---
 
-<PageLayout {meta}>
-  <Button title='Back' href='/' variant='back' />
+<PageLayout title='About' {headings} comment>
+  <h2 id='about'>About Me</h2>
+  <p> Student / <Spoiler>Milk lover 🥛</Spoiler> </p>
+  <p>
+    I'm "Niuru," an undergraduate student in Computer Science at Central China Normal University (CCNU).
+  </p>
+  <p>
+    Don't dream during the day, don't daydream at night.
+  </p>
+  <p>
+    Broad interests, love programming, writing, and tinkering with all kinds of new technologies and tools.
+  </p>
+  <Button title='Sponsor Me' class='w-fit' href='/en/projects#sponsorship' variant='ahead' />
 
-  <main class='mt-6 lg:mt-10'>
-    <div id='content-header' class='animate'>
-      <h1 class='mb-6 text-3xl font-medium'>About</h1>
-    </div>
+  <h2 id='tools'>Tools</h2>
+  <ToolSection
+    class='mb-5'
+    title='Development Tools'
+    tools={[
+      {
+        name: 'macOS',
+        description: 'Operating System',
+        href: 'https://www.apple.com/macos/',
+        icon: import('@/assets/tools/apple.svg?raw')
+      },
+      {
+        name: 'Chrome',
+        description: 'Browser',
+        href: 'https://www.google.com/chrome/',
+        icon: import('@/assets/tools/chrome.svg?raw')
+      },
+      {
+        name: 'VS Code',
+        description: 'Editor',
+        href: 'https://code.visualstudio.com/',
+        icon: import('@/assets/tools/vscode.svg?raw')
+      },
+      {
+        name: 'Neovim',
+        description: 'Editor',
+        href: 'https://neovim.io/',
+        icon: import('@/assets/tools/neovim.svg?raw')
+      },
+      {
+        name: 'Gemini',
+        description: 'AI Assistant',
+        href: 'https://gemini.google.com/',
+        icon: import('@/assets/tools/gemini.svg?raw')
+      },
+      {
+        name: 'Notion',
+        description: 'Notes',
+        href: 'https://www.notion.so/',
+        icon: import('@/assets/tools/notion.svg?raw')
+      },
+    ]}
+  />
 
-    <div id='content' class='animate flex flex-col gap-y-12'>
-      <section>
-        <h2 class='mb-4 text-2xl font-medium'>About Me</h2>
-        <p class='mb-4 text-muted-foreground'>
-          Hi, I'm a computer science student at Central China Normal University. I love
-          programming, exploring new technologies, and sharing knowledge.
-        </p>
-        <p class='text-muted-foreground'>
-          Don't dream during the day, don't daydream at night.
-        </p>
-      </section>
-
-      <section>
-        <h2 class='mb-4 text-2xl font-medium'>Tools</h2>
-        <ToolSection
-          title='Development Tools'
-          tools={[
-            {
-              name: 'macOS',
-              description: 'Operating System',
-              href: 'https://www.apple.com/macos/',
-              icon: import('@/assets/tools/apple.svg?raw')
-            },
-            {
-              name: 'Chrome',
-              description: 'Browser',
-              href: 'https://www.google.com/chrome/',
-              icon: import('@/assets/tools/chrome.svg?raw')
-            },
-            {
-              name: 'VS Code',
-              description: 'Editor',
-              href: 'https://code.visualstudio.com/',
-              icon: import('@/assets/tools/vscode.svg?raw')
-            },
-            {
-              name: 'Neovim',
-              description: 'Editor',
-              href: 'https://neovim.io/',
-              icon: import('@/assets/tools/neovim.svg?raw')
-            },
-            {
-              name: 'Gemini',
-              description: 'AI Assistant',
-              href: 'https://gemini.google.com/',
-              icon: import('@/assets/tools/gemini.svg?raw')
-            },
-            {
-              name: 'Notion',
-              description: 'Notes',
-              href: 'https://www.notion.so/',
-              icon: import('@/assets/tools/notion.svg?raw')
-            },
-          ]}
-        />
-      </section>
-
-      <section>
-        <h2 class='mb-4 text-2xl font-medium'>Sponsorship</h2>
-        <div class='flex flex-wrap gap-4'>
-          <Button title='Sponsor Me' href='https://github.com/sponsors/Supermilk-Niuru' />
-        </div>
-      </section>
-    </div>
-  </main>
+  <h2 id='social-networks'>Social Networks</h2>
+  <p>You can find me on these platforms:</p>
+  <ul>
+    <li><a href='https://github.com/Supermilk-Niuru' target='_blank'>GitHub</a></li>
+  </ul>
+  <p>Feel free to reach out via email: <code>supermilk@example.com</code></p>
 </PageLayout>

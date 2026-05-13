@@ -10,7 +10,8 @@
       "Bash(npm run *)",
       "WebFetch(domain:axi404.top)",
       "Bash(mkdir -p /Users/supermilk/code/My-blog/src/pages/en/tags/\\\\[tag\\\\])",
-      "Bash(xxd)"
+      "Bash(xxd)",
+      "Bash(curl -s \"https://github.com/users/Supermilk-Niuru/contributions\")"
     ],
     "additionalDirectories": [
       "/Users/supermilk/code/My-blog/src/pages/en/tags"

@@ -3,7 +3,7 @@ import type { CardListData, Config, IntegrationUserConfig, ThemeUserConfig } fro
 export const theme: ThemeUserConfig = {
   title: "Niuru's blog",
   author: 'Supermilk-Niuru',
-  description: 'Stay hungry, stay foolish',
+  description: '白天不要做梦，晚上不要做白日梦',
   favicon: '/favicon/favicon.ico',
   socialCard: '/images/social-card.png',
 

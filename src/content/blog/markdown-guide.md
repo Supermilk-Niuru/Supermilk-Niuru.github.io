@@ -2,6 +2,7 @@
 title: "Markdown 写作指南"
 publishDate: "2026-03-10"
 description: "Markdown 常用语法速查表，方便写作时参考。"
+category: "教程"
 tags: ["技术", "教程"]
 ---
 

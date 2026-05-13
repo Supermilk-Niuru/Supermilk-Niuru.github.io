@@ -1,0 +1,183 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  posts: CollectionEntry<'blog'>[]
+}
+
+const { posts } = Astro.props
+
+// In-memory cache for GitHub data (avoids re-fetching on every request)
+interface CellData {
+  level: number
+  count: number
+}
+
+interface CacheEntry {
+  dateData: Map<string, CellData>
+  totalContributions: number
+  timestamp: number
+}
+
+let ghCache: CacheEntry | null = null
+const CACHE_TTL = 60 * 60 * 1000 // 1 hour
+
+let dateData = new Map<string, CellData>()
+let totalContributions = 0
+
+// Try loading from cache
+const now = Date.now()
+if (ghCache && now - ghCache.timestamp < CACHE_TTL) {
+  dateData = ghCache.dateData
+  totalContributions = ghCache.totalContributions
+} else {
+  try {
+    const ghResp = await fetch('https://github.com/users/Supermilk-Niuru/contributions', {
+      signal: AbortSignal.timeout(5000)
+    })
+    const html = await ghResp.text()
+
+    // Parse all <td> elements that carry data-date, id, and data-level
+    const tdMap = new Map<string, { date: string; level: number }>()
+    const tdRegex = /<td[^>]*data-date="([^"]+)"[^>]*id="([^"]*)"[^>]*data-level="(\d+)"[^>]*>/g
+    let m: RegExpExecArray | null
+    while ((m = tdRegex.exec(html)) !== null) {
+      tdMap.set(m[2], { date: m[1], level: parseInt(m[3]) })
+    }
+
+    // Parse tooltips and match them to <td> elements by id
+    const tipRegex = /<tool-tip[^>]*for="([^"]*)"[^>]*>(\d+|No)\s+contribution[^<]*<\/tool-tip>/g
+    let t: RegExpExecArray | null
+    while ((t = tipRegex.exec(html)) !== null) {
+      const td = tdMap.get(t[1])
+      if (td) {
+        const count = t[2] === 'No' ? 0 : parseInt(t[2])
+        dateData.set(td.date, { level: td.level, count })
+        if (count > 0) totalContributions += count
+      }
+    }
+
+    ghCache = { dateData, totalContributions, timestamp: Date.now() }
+  } catch {
+    // Fallback: use blog post dates
+    for (const post of posts) {
+      const d = post.data.publishDate
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+      dateData.set(key, { level: 2, count: 1 })
+    }
+    totalContributions = posts.length
+  }
+}
+
+// Build 53 weeks ending on Saturday of current week
+const today = new Date()
+const endDate = new Date(today)
+endDate.setDate(endDate.getDate() + (6 - endDate.getDay()))
+
+const startDate = new Date(endDate)
+startDate.setDate(startDate.getDate() - 370)
+startDate.setDate(startDate.getDate() - startDate.getDay())
+
+interface Cell { date: string; level: number; count: number }
+interface Week { cells: Cell[]; monthLabel?: string }
+
+const weeks: Week[] = []
+const cur = new Date(startDate)
+let prevMonth = -1
+
+while (cur <= endDate) {
+  const cells: Cell[] = []
+  let monthLabel: string | undefined
+
+  for (let day = 0; day < 7; day++) {
+    if (day === 0) {
+      const m = cur.getMonth()
+      if (m !== prevMonth) {
+        monthLabel = cur.toLocaleDateString('en-US', { month: 'short' })
+        prevMonth = m
+      }
+    }
+
+    const ds = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}-${String(cur.getDate()).padStart(2, '0')}`
+    const existing = dateData.get(ds)
+    cells.push({
+      date: ds,
+      level: existing ? existing.level : 0,
+      count: existing ? existing.count : 0
+    })
+    cur.setDate(cur.getDate() + 1)
+  }
+
+  weeks.push({ cells, monthLabel })
+}
+
+const showDay = ['', 'Mon', '', 'Wed', '', 'Fri', '']
+const numWeeks = weeks.length
+const cellSize = 13
+const gap = 3
+
+// Year range for summary
+const yearStart = startDate.getFullYear()
+const yearEnd = today.getFullYear()
+const yearLabel = yearStart === yearEnd ? `${yearStart}` : `${yearStart} ~ ${yearEnd}`
+---
+
+<div class="rounded-lg border bg-card p-4 w-full overflow-hidden">
+  <!-- Month labels -->
+  <div
+    style={`padding-left:28px;display:flex;gap:${gap}px;font-size:12px;line-height:1.2;margin-bottom:4px;color:hsl(var(--muted-foreground))`}
+  >
+    {weeks.map((w) => (
+      <span
+        style={`width:${cellSize}px;flex-shrink:0;text-align:center;${w.monthLabel ? '' : 'visibility:hidden'}`}
+      >{w.monthLabel || ' '}</span>
+    ))}
+  </div>
+
+  <div style="display:flex;overflow-x:auto;padding-bottom:2px">
+    <!-- Day labels -->
+    <div
+      style={`display:flex;flex-direction:column;gap:${gap}px;width:26px;flex-shrink:0;font-size:11px;color:hsl(var(--muted-foreground))`}
+    >
+      {showDay.map((label) => (
+        <span
+          style={`height:${cellSize}px;display:flex;align-items:center;line-height:1;padding-right:4px`}
+        >{label}</span>
+      ))}
+    </div>
+
+    <!-- Cells grid: 7 rows x N columns, flows top-to-bottom then left-to-right -->
+    <div
+      class="contribution-grid"
+      style={`display:grid;grid-template-columns:repeat(${numWeeks},${cellSize}px);grid-template-rows:repeat(7,${cellSize}px);gap:${gap}px`}
+    >
+      {weeks.map((week) =>
+        week.cells.map((cell) => (
+          <div
+            class="contribution-cell rounded-sm"
+            data-level={cell.level}
+            title={`${cell.date}${cell.count > 0 ? ` · ${cell.count} contribution${cell.count > 1 ? 's' : ''}` : ' · No contributions'}`}
+          />
+        ))
+      )}
+    </div>
+  </div>
+
+  <!-- Summary line -->
+  <div
+    style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12px;color:hsl(var(--muted-foreground));padding-left:28px"
+  >
+    <span>{totalContributions} contributions in {yearLabel}</span>
+    <div style="display:flex;align-items:center;gap:3px">
+      <span style="font-size:10px">Less</span>
+      {[0, 1, 2, 3, 4].map((l) => (
+        <div
+          class="contribution-cell rounded-sm"
+          data-level={l}
+          style="width:12px;height:12px;display:inline-block"
+        />
+      ))}
+      <span style="font-size:10px">More</span>
+    </div>
+  </div>
+</div>

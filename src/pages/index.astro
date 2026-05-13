@@ -2,16 +2,25 @@
 import { Image } from 'astro:assets'
 
 import { Quote } from 'astro-pure/advanced'
-import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Card, Icon, Label } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import Section from '@/components/home/Section.astro'
+import ContributionGrid from '@/components/home/ContributionGrid.astro'
 import config from '@/site-config'
 
-const MAX_POSTS = 8
 const allPosts = await getBlogCollection()
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+const allPostsByDate = sortMDByDate(allPosts)
+
+// Calculate days from first post to now
+const firstPostDate = allPostsByDate.length > 0 ? allPostsByDate[allPostsByDate.length - 1].data.publishDate : new Date()
+const daysSinceFirstPost = Math.floor((Date.now() - firstPostDate.getTime()) / (1000 * 60 * 60 * 24))
+
+// Last updated date
+const lastPost = allPostsByDate.length > 0 ? allPostsByDate[0] : null
+const lastUpdatedStr = lastPost
+  ? `${lastPost.data.publishDate.getFullYear()}-${String(lastPost.data.publishDate.getMonth() + 1).padStart(2, '0')}-${String(lastPost.data.publishDate.getDate()).padStart(2, '0')}`
+  : '-'
 
 const imagePath = config.logo.src
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -23,7 +32,7 @@ if (!images[imagePath])
   )
 ---
 
-<PageLayout meta={{ title: '首页' }} highlightColor='#659EB9'>
+<PageLayout meta={{ title: config.title }} highlightColor='#659EB9'>
   <main class='flex w-full flex-col items-center'>
     <section class='animate mb-10 flex flex-col items-center gap-y-7' id='content-header'>
       <Image
@@ -53,18 +62,15 @@ if (!images[imagePath])
     </section>
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
-      <Section title='关于'>
+      <Section title='About'>
         <p class='text-muted-foreground'>学生 @CCNU</p>
         <p class='text-muted-foreground'>
-          华中师范大学计算机专业本科生
+          {config.description}
         </p>
-        <p class='text-muted-foreground'>
-          白天不要做梦，晚上不要做白日梦
-        </p>
-        <Button title='了解更多' class='w-fit self-end' href='/about' variant='ahead' />
+        <Button title='More about' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
 
-      <Section title='教育经历'>
+      <Section title='Education'>
         <Card
           as='a'
           heading='华中师范大学'
@@ -74,14 +80,14 @@ if (!images[imagePath])
         />
       </Section>
 
-      <Section title='统计'>
+      <Section title='Stastics'>
         <div class='grid grid-cols-2 gap-4 sm:grid-cols-4'>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
-            <span class='text-2xl font-bold text-primary'>365+</span>
+            <span class='text-2xl font-bold text-primary'>{daysSinceFirstPost}</span>
             <span class='text-sm text-muted-foreground'>在线天数</span>
           </div>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
-            <span class='text-2xl font-bold text-primary'>更新中</span>
+            <span class='text-2xl font-bold text-primary'>{lastUpdatedStr}</span>
             <span class='text-sm text-muted-foreground'>最后更新</span>
           </div>
           <div class='flex flex-col items-center rounded-lg border bg-card p-4 text-center'>
@@ -97,22 +103,10 @@ if (!images[imagePath])
             <span class='text-sm text-muted-foreground'>文章总数</span>
           </div>
         </div>
+        <div class='mt-4'>
+          <ContributionGrid posts={allPosts} />
+        </div>
       </Section>
-
-      {
-        allPostsByDate.length > 0 && (
-          <Section title='最新文章'>
-            <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
-              {allPostsByDate.map((p) => (
-                <li class='flex flex-col gap-x-2 sm:flex-row'>
-                  <PostPreview post={p} />
-                </li>
-              ))}
-            </ul>
-            <Button title='查看全部' class='w-fit self-end' href='/blog' variant='ahead' />
-          </Section>
-        )
-      }
     </div>
     <Quote class='mt-12' />
   </main>

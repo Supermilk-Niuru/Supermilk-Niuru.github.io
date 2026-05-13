@@ -2,6 +2,7 @@
 title: "我的第一篇博客"
 publishDate: "2026-01-15"
 description: "你好，世界！这是我的博客第一篇文章。"
+category: "随笔"
 tags: ["日常", "随笔"]
 ---
 

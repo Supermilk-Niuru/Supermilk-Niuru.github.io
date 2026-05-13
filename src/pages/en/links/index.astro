@@ -1,59 +1,60 @@
 ---
 import links from 'public/links.json'
 
-import { Button, Card, Collapse, Timeline } from 'astro-pure/user'
-import FriendList from '@/components/links/FriendList.astro'
-import PageLayout from '@/layouts/BaseLayout.astro'
+import { Collapse, Timeline } from 'astro-pure/user'
 import config from 'virtual:config'
+import PageLayout from '@/layouts/CommonPage.astro'
+import FriendList from '@/components/links/FriendList.astro'
+
+const headings = [
+  { depth: 2, slug: 'common-links', text: 'Common Links' },
+  { depth: 2, slug: 'special-links', text: 'Special Links' },
+  { depth: 2, slug: 'apply-links', text: 'Apply for Link' }
+]
 
 const { friends } = links
 const linksConf = config.integ.links
-
-const meta = {
-  description: 'Friends and links',
-  title: 'Links'
-}
+const linkEditPage = 'https://github.com/Supermilk-Niuru/My-blog/blob/main/public/links.json'
 ---
 
-<PageLayout {meta}>
-  <Button title='Back to Home' href='/' variant='back' />
+<PageLayout title='Links' {headings} comment>
+  <p>Friend links are randomly sorted.</p>
+  <h2 id='common-links'>Common Links</h2>
+  <FriendList list={friends[0]} />
+  <Collapse title='Inactive Links'>
+    <FriendList list={friends[1]} />
+  </Collapse>
+  <Collapse title='Link History'>
+    <Timeline events={linksConf.logbook} />
+  </Collapse>
+  <h2 id='special-links'>Special Links</h2>
+  <FriendList list={friends[2]} />
 
-  <main class='mt-6 lg:mt-10'>
-    <div id='content-header' class='animate'>
-      <h1 class='mb-6 text-3xl font-medium'>Links</h1>
-    </div>
+  <h2 id='apply-links'>Apply for Link</h2>
+  <p>My site info (click to copy):</p>
+  <blockquote class='not-prose grid grid-cols-[auto_1fr] gap-x-2 break-words border-s-4 ps-4'>
+    {
+      linksConf.applyTip.map(({ name, val }) => {
+        const script = `navigator.clipboard.writeText('${val}');document.dispatchEvent(new CustomEvent('toast',{detail:{message:'Copied "${val}" to clipboard!'}}))`
+        return (
+          <>
+            <span class='text-end'>{name}:</span>
+            <samp class='cursor-pointer' onclick={script}>
+              {val}
+            </samp>
+          </>
+        )
+      })
+    }
+  </blockquote>
 
-    <div id='content' class='animate flex flex-col gap-y-12'>
-      <section>
-        <h2 class='mb-4 text-2xl font-medium'>Common Links</h2>
-        <FriendList list={friends[0]} />
-      </section>
-
-      <Collapse title='Inactive Links'>
-        <FriendList list={friends[1]} />
-      </Collapse>
-
-      <Collapse title='Link History'>
-        <Timeline events={linksConf.logbook} />
-      </Collapse>
-
-      <section>
-        <h2 class='mb-4 text-2xl font-medium'>Special Links</h2>
-        <FriendList list={friends[2]} />
-      </section>
-
-      <section>
-        <h2 class='mb-4 text-2xl font-medium'>Apply for Link</h2>
-        <Card heading='Requirements'>
-          <ol class='list-inside list-decimal space-y-1 text-muted-foreground'>
-            <li>Your website must have original content</li>
-            <li>Your website must be accessible stably for a long time</li>
-            <li>No illegal or prohibited content</li>
-            <li>Friendly and non-aggressive</li>
-            <li>Add my link first, then apply</li>
-          </ol>
-        </Card>
-      </section>
-    </div>
-  </main>
+  <p>
+    Apply via the comment section below or <a href={linkEditPage} target='_blank'>submit a PR</a>. Requirements:<br />
+  </p>
+  <ul>
+    <li>Already added my link to your site</li>
+    <li>Site is running with a proper domain name</li>
+    <li>At least 5 original articles with updates within the last year</li>
+    <li>Content must comply with applicable laws</li>
+  </ul>
 </PageLayout>

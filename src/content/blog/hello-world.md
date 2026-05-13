@@ -2,6 +2,7 @@
 title: "你好，世界！"
 publishDate: "2026-02-07"
 description: "博客搭建完成，记录一下搭建过程。"
+category: "技术"
 tags: ["技术", "Blog"]
 ---
 

@@ -57,7 +57,7 @@ function selectTag(tag: string) {
         :class="{ active: selectedTag === tag }"
         @click="selectTag(tag)"
       >
-        #{{ tag }}
+        #{{ $t('tag.' + tag) || tag }}
         <span class="tag-count">{{ info.count }}</span>
       </button>
       <p v-if="!sortedTags.length" class="empty-text">No tags yet.</p>
@@ -66,7 +66,7 @@ function selectTag(tag: string) {
     <!-- 选中标签的文章列表 -->
     <div v-if="selectedTag" class="filtered-posts">
       <h2 class="filter-heading">
-        Posts tagged: <strong>#{{ selectedTag }}</strong>
+        {{ $t('blog.filteredByTag') }} <strong>#{{ $t('tag.' + selectedTag) || selectedTag }}</strong>
       </h2>
       <div class="post-list">
         <article v-for="post in filteredPosts" :key="post.path" class="post-item">

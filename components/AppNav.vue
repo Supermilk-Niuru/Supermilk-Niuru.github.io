@@ -10,6 +10,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 const router = useRouter()
 const route = useRoute()
 const dropdownOpen = ref(false)
+const searchOpen = ref(false)
 
 // 语言切换
 const currentLang = computed(() => {
@@ -127,6 +128,13 @@ const navItems = [
 
       <!-- 右侧按钮 -->
       <div class="nav-actions">
+        <!-- 搜索 -->
+        <button class="nav-action-btn nav-search-btn" :title="$t('nav.search')" @click="searchOpen = true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
         <!-- 语言切换 -->
         <button class="nav-action-btn" :title="$t('theme.switchLang')" @click="toggleLang">
           {{ isEnglish ? '中' : 'EN' }}
@@ -134,6 +142,9 @@ const navItems = [
       </div>
     </div>
   </nav>
+
+  <!-- 搜索弹窗（Valaxy 本地搜索） -->
+  <YunLocalSearch :open="searchOpen" @close="searchOpen = false" />
 </template>
 
 <style scoped>

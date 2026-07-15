@@ -35,8 +35,8 @@ const categories = computed(() => {
     <div class="category-list">
       <div v-for="[cat, info] in categories" :key="cat" class="category-item">
         <div class="category-header">
-          <span class="category-name">{{ cat }}</span>
-          <span class="category-count">{{ info.count }} {{ info.count === 1 ? 'post' : 'posts' }}</span>
+          <span class="category-name">{{ $t('category.' + cat) || cat }}</span>
+          <span class="category-count">{{ $t('blog.postsCount', { count: info.count }) }}</span>
         </div>
         <div class="category-posts">
           <article v-for="post in info.posts" :key="post.path" class="post-item">

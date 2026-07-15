@@ -57,3 +57,11 @@ pnpm-debug.log*
 
 .claude
 claude/
+# valaxy rss
+public/Supermilk-Niuru.xml
+
+# valaxy rss
+public/Supermilk-Niuru.atom
+
+# valaxy rss
+public/Supermilk-Niuru.json

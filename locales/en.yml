@@ -5,6 +5,7 @@ nav:
   academic: Academic
   projects: Projects
   about: About
+  search: Search
 
 home:
   subtitle: AI · Deep Learning · BCI · Growth
@@ -25,6 +26,36 @@ blog:
   prevPage: ← Prev
   nextPage: Next →
   postsCount: '{count} posts'
+  searchResults: 'Results for "{query}"'
+  clearSearch: Clear search
+  filteredByTag: 'Filtered by tag:'
+  clearFilter: Clear filter
+  noPosts: No posts yet
+
+sidebar:
+  search: Search
+  searchPlaceholder: Search titles, content or tags...
+  tags: Tags
+  noTags: No tags yet
+
+# Category i18n (page-level)
+category:
+  Research: Research
+  Computer Science: Computer Science
+  Life: Life
+  Thoughts: Thoughts
+
+# Tag i18n (page-level): key = Chinese tag, value = English display
+tag:
+  C语言: C Language
+  指针: Pointer
+  数组: Array
+  字符串: String
+  函数: Function
+  结构体: Struct
+  联合体: Union
+  动态内存分配: Dynamic Memory
+  进制间的转换以及浮点数: Number Base & Float
 
 academic:
   title: Academic

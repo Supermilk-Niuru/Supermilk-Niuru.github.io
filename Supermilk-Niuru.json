@@ -1,0 +1,122 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Supermilk-Niuru",
+    "home_page_url": "https://supermilk-niuru.github.io/",
+    "feed_url": "https://supermilk-niuru.github.io/Supermilk-Niuru.json",
+    "description": "Personal knowledge garden and growth archive",
+    "icon": "https://supermilk-niuru.github.io/avatar.jpg",
+    "author": {
+        "name": "Supermilk-Niuru",
+        "url": "https://valaxy.site"
+    },
+    "items": [
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用",
+            "content_html": "<h3>C++的引用</h3>\n<h6>现在先简单说一下</h6>\n<p>C++的引用相当于一个起别名，直接传了地址（但是不同于指针，指针可以改变指向，而引用是不可以改变的，并且引用必须<strong>初始化</strong>），不需要像值传递那</p>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用",
+            "title": "C++的引用",
+            "date_modified": "2026-02-13T00:00:00.000Z",
+            "date_published": "2026-02-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针",
+            "content_html": "<p>如果要查找指针其他相关笔记,<strong>请点击☞</strong>[C语言部分知识点-指针](<a href=\"https://github.com/Supermilk-Niuru/Learn-C-language/blob/main/C%25\">https://github.com/Supermilk-Niuru/Learn-C-language/blob/main/C%</a></p>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针",
+            "title": "const类型指针",
+            "date_modified": "2026-02-13T00:00:00.000Z",
+            "date_published": "2026-02-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用",
+            "content_html": "<h3>结构体的应用</h3>\n<ul>\n<li>结构体可以整体进行交换，不必像下面例子一步步地进行</li>\n</ul>\n<pre><code class=\"language-C++\">    struct person tmp;\n    tmp.age = s[j].age;\n    tmp</code></pre>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用",
+            "title": "结构体的应用",
+            "date_modified": "2026-02-13T00:00:00.000Z",
+            "date_published": "2026-02-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C_Language/函数",
+            "content_html": "<h3>变量作用域、生存期、存储类型</h3>\n<h4>变量的作用域</h4>\n<h6>局部变量</h6>\n<p>在<code>{ }</code>内部定义，只能在所属函数中使用。</p>\n<p>作用范围：从变量定义处开始，到该函数结束。函数结束后，其占用的内存</p>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C_Language/函数\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C_Language/函数</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C_Language/函数",
+            "title": "C语言———函数",
+            "date_modified": "2026-01-13T00:00:00.000Z",
+            "date_published": "2026-01-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串",
+            "content_html": "<h3>字符串的定义、输出、输入、遍历</h3>\n<h6>字符串的定义</h6>\n<ul>\n<li><strong>最标准</strong>的定义方式：<code>char str[6] = {'H','e','l','l','o','\\0'};</code></li>\n<li>字符串数组</li>\n</ul>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串",
+            "title": "C语言———字符串",
+            "date_modified": "2026-01-13T00:00:00.000Z",
+            "date_published": "2026-01-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C_Language/指针",
+            "content_html": "<h3>指针变量</h3>\n<h6>如何定义</h6>\n<p>数据类型 * 变量名</p>\n<p><strong>数据类型要和指向变量的类型保持一致</strong>，变量中存储的是指向对象的地址。</p>\n<h6>如何使用</h6>\n<p><code>int *p = &amp;a;</code></p>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C_Language/指针\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C_Language/指针</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C_Language/指针",
+            "title": "C语言———指针",
+            "date_modified": "2026-01-13T00:00:00.000Z",
+            "date_published": "2026-01-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C_Language/数组",
+            "content_html": "<h3>二维数组</h3>\n<h6>定义二维数组</h6>\n<p><strong>方式一</strong>：</p>\n<p><code>int a[2][5]={ {1,2,3,4,5},{6,7,8,9,10} };</code></p>\n<p>&lt;font style=&quot;color:#DF</p>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C_Language/数组\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C_Language/数组</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C_Language/数组",
+            "title": "C语言———数组",
+            "date_modified": "2026-01-13T00:00:00.000Z",
+            "date_published": "2026-01-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配",
+            "content_html": "<h3>结构体的定义和调用</h3>\n<p>指针用<code>-&gt;</code>，变量用<code>.</code></p>\n<pre><code class=\"language-c\">#include&lt;stdio.h&gt;\n#include&lt;string.h&gt;\nstruct person\n{\n    char nam</code></pre>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配",
+            "title": "C语言———结构体、联合体、动态内存分配",
+            "date_modified": "2026-01-13T00:00:00.000Z",
+            "date_published": "2026-01-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
+            "id": "https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数",
+            "content_html": "<h3>十进制转换成其他进制</h3>\n<h6>整数转换</h6>\n<p>除基取余，商零为止。余数<strong>从右往左</strong>写。</p>\n<h6>小数转换</h6>\n<p>乘基取整，得零为止（或者达到所需精度）。取整的数<strong>从左往右</strong>写。</p>\n<h1></h1>\n<br/><p>访问 <a href=\"https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数\" target=\"_blank\">https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数</a> 阅读全文。</p>",
+            "url": "https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数",
+            "title": "C语言———进制间的转换以及浮点数",
+            "date_modified": "2026-01-13T00:00:00.000Z",
+            "date_published": "2026-01-13T00:00:00.000Z",
+            "author": {
+                "name": "Supermilk-Niuru",
+                "url": "https://valaxy.site"
+            }
+        }
+    ]
+}

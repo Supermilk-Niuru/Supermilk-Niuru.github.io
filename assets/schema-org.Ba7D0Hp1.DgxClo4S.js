@@ -1,0 +1,1 @@
+import{q as e}from"./theme.ei7H8h9Y.js";var t=e({cast(e){return e===`number`?{ratingValue:e}:e},defaults:{"@type":`Rating`,bestRating:5,worstRating:1}});export{t};

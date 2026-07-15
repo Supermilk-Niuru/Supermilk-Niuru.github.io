@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://supermilk-niuru.github.io/</id>
+    <title>Supermilk-Niuru</title>
+    <updated>2026-07-15T13:45:38.528Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Supermilk-Niuru</name>
+        <email>your-email@example.com</email>
+        <uri>https://valaxy.site</uri>
+    </author>
+    <link rel="alternate" href="https://supermilk-niuru.github.io/"/>
+    <link rel="self" href="https://supermilk-niuru.github.io/Supermilk-Niuru.atom"/>
+    <subtitle>Personal knowledge garden and growth archive</subtitle>
+    <logo>https://supermilk-niuru.github.io/avatar.jpg</logo>
+    <icon>https://supermilk-niuru.github.io/favicon.ico</icon>
+    <rights>CC BY-NC-SA 4.0 2026 © Supermilk-Niuru</rights>
+    <entry>
+        <title type="html"><![CDATA[C++的引用]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用"/>
+        <updated>2026-02-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>C++的引用</h3>
+<h6>现在先简单说一下</h6>
+<p>C++的引用相当于一个起别名，直接传了地址（但是不同于指针，指针可以改变指向，而引用是不可以改变的，并且引用必须<strong>初始化</strong>），不需要像值传递那</p>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C++_Language/C++的引用</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-02-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[const类型指针]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针"/>
+        <updated>2026-02-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<p>如果要查找指针其他相关笔记,<strong>请点击☞</strong>[C语言部分知识点-指针](<a href="https://github.com/Supermilk-Niuru/Learn-C-language/blob/main/C%25">https://github.com/Supermilk-Niuru/Learn-C-language/blob/main/C%</a></p>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C++_Language/const类型指针</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-02-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[结构体的应用]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用"/>
+        <updated>2026-02-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>结构体的应用</h3>
+<ul>
+<li>结构体可以整体进行交换，不必像下面例子一步步地进行</li>
+</ul>
+<pre><code class="language-C++">    struct person tmp;
+    tmp.age = s[j].age;
+    tmp</code></pre>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C++_Language/结构体的应用</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-02-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言———函数]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C_Language/函数</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C_Language/函数"/>
+        <updated>2026-01-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>变量作用域、生存期、存储类型</h3>
+<h4>变量的作用域</h4>
+<h6>局部变量</h6>
+<p>在<code>{ }</code>内部定义，只能在所属函数中使用。</p>
+<p>作用范围：从变量定义处开始，到该函数结束。函数结束后，其占用的内存</p>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C_Language/函数" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C_Language/函数</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-01-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言———字符串]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串"/>
+        <updated>2026-01-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>字符串的定义、输出、输入、遍历</h3>
+<h6>字符串的定义</h6>
+<ul>
+<li><strong>最标准</strong>的定义方式：<code>char str[6] = {'H','e','l','l','o','\0'};</code></li>
+<li>字符串数组</li>
+</ul>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C_Language/字符串</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-01-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言———指针]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C_Language/指针</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C_Language/指针"/>
+        <updated>2026-01-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>指针变量</h3>
+<h6>如何定义</h6>
+<p>数据类型 * 变量名</p>
+<p><strong>数据类型要和指向变量的类型保持一致</strong>，变量中存储的是指向对象的地址。</p>
+<h6>如何使用</h6>
+<p><code>int *p = &amp;a;</code></p>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C_Language/指针" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C_Language/指针</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-01-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言———数组]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C_Language/数组</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C_Language/数组"/>
+        <updated>2026-01-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>二维数组</h3>
+<h6>定义二维数组</h6>
+<p><strong>方式一</strong>：</p>
+<p><code>int a[2][5]={ {1,2,3,4,5},{6,7,8,9,10} };</code></p>
+<p>&lt;font style=&quot;color:#DF</p>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C_Language/数组" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C_Language/数组</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-01-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言———结构体、联合体、动态内存分配]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配"/>
+        <updated>2026-01-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>结构体的定义和调用</h3>
+<p>指针用<code>-&gt;</code>，变量用<code>.</code></p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+struct person
+{
+    char nam</code></pre>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C_Language/结构体、联合体、动态内存分配</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-01-13T00:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C语言———进制间的转换以及浮点数]]></title>
+        <id>https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数</id>
+        <link href="https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数"/>
+        <updated>2026-01-13T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h3>十进制转换成其他进制</h3>
+<h6>整数转换</h6>
+<p>除基取余，商零为止。余数<strong>从右往左</strong>写。</p>
+<h6>小数转换</h6>
+<p>乘基取整，得零为止（或者达到所需精度）。取整的数<strong>从左往右</strong>写。</p>
+<h1></h1>
+<br/><p>访问 <a href="https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数" target="_blank">https://supermilk-niuru.github.io/posts/Learn_C_Language/进制间的转换以及浮点数</a> 阅读全文。</p>]]></content>
+        <author>
+            <name>Supermilk-Niuru</name>
+            <email>your-email@example.com</email>
+            <uri>https://valaxy.site</uri>
+        </author>
+        <published>2026-01-13T00:00:00.000Z</published>
+    </entry>
+</feed>

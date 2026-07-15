@@ -1,0 +1,1 @@
+import{Er as e}from"./framework.-xTZ69yZ.js";var t={root:()=>e(()=>import(`./@localSearchIndexroot.BigXvkoS.js`),[])};export{t as default};

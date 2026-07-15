@@ -1,0 +1,48 @@
+# English UI texts
+
+nav:
+  blog: Blog
+  academic: Academic
+  projects: Projects
+  about: About
+
+home:
+  subtitle: AI · Deep Learning · BCI · Growth
+  latestPosts: Latest Posts
+  viewAllBlog: View All Blog →
+  featuredProjects: Featured Projects
+  contributions: Recent Contributions
+
+blog:
+  title: Blog
+  all: All
+  filterBy: Category
+  categories:
+    Research: Research
+    Computer Science: Computer Science
+    Life: Life
+    Thoughts: Thoughts
+  prevPage: ← Prev
+  nextPage: Next →
+  postsCount: '{count} posts'
+
+academic:
+  title: Academic
+  researchExperience: Research Experience
+  papers: Papers & Reading
+  skills: Skills
+
+projects:
+  title: Projects
+
+about:
+  title: About
+
+footer:
+  copyright: © {year} Supermilk-Niuru
+  viewOnGitHub: View on GitHub
+
+theme:
+  switchToLight: Switch to light mode
+  switchToDark: Switch to dark mode
+  switchLang: 中文

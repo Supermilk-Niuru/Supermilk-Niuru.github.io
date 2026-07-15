@@ -1,0 +1,111 @@
+/**
+ * 配色系统
+ *
+ * Light Mode: 纯白背景 · 高可读性 · GitHub/Notion 风格
+ * Dark Mode:  Catppuccin 柔化版 · 蓝紫强调 · 适合长时间阅读
+ *
+ * 换色只需改这个文件
+ */
+
+/* =========================================
+   Light Mode (默认)
+   ========================================= */
+:root {
+  /* 基础背景 — 纯白干净 */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --bg-card: #ffffff;
+
+  /* 边框和分隔 */
+  --border-color: #d0d7de;
+  --border-light: #e8ecf0;
+
+  /* 文字 — 高对比度 */
+  --text-primary: #1f2328;
+  --text-secondary: #59636e;
+  --text-muted: #8b949e;
+
+  /* 强调色 — Catppuccin Latte 蓝/紫 */
+  --accent: #1e66f5;
+  --accent-secondary: #7287fd;
+  --link: #1e66f5;
+  --link-hover: #8839ef;
+
+  /* Catppuccin 兼容变量（组件内部使用） */
+  --ctp-base: #ffffff;
+  --ctp-mantle: #f6f8fa;
+  --ctp-crust: #eef1f5;
+  --ctp-surface0: #ffffff;
+  --ctp-surface1: #d0d7de;
+  --ctp-surface2: #bac0cc;
+  --ctp-text: #1f2328;
+  --ctp-subtext0: #59636e;
+  --ctp-subtext1: #656d76;
+  --ctp-overlay0: #8b949e;
+  --ctp-overlay1: #9ca3af;
+  --ctp-overlay2: #b0b8c4;
+  --ctp-blue: #1e66f5;
+  --ctp-lavender: #7287fd;
+  --ctp-green: #2ea043;
+  --ctp-mauve: #8839ef;
+  --ctp-yellow: #bf8700;
+  --ctp-peach: #d96c00;
+  --ctp-red: #cf222e;
+  --ctp-pink: #c4529c;
+  --ctp-teal: #179299;
+  --ctp-sky: #04a5e5;
+  --ctp-rosewater: #dc8a78;
+  --ctp-maroon: #e64553;
+}
+
+/* =========================================
+   Dark Mode (.dark)
+   ========================================= */
+.dark,
+:root[data-theme='dark'] {
+  /* 基础背景 — Catppuccin 柔化（比 Mocha 亮一档 ≈ Macchiato） */
+  --bg-primary: #24273a;
+  --bg-secondary: #1e2030;
+  --bg-card: #2a2d3e;
+
+  /* 边框 — 柔和不刺眼 */
+  --border-color: #3b3f58;
+  --border-light: #313548;
+
+  /* 文字 — 高对比度但不刺眼 */
+  --text-primary: #cdd6f4;
+  --text-secondary: #a5adcb;
+  --text-muted: #6c7094;
+
+  /* 强调色 — Catppuccin Mocha 蓝/紫 */
+  --accent: #89b4fa;
+  --accent-secondary: #b4befe;
+  --link: #89b4fa;
+  --link-hover: #cba6f7;
+
+  /* Catppuccin 兼容变量 */
+  --ctp-base: #24273a;
+  --ctp-mantle: #1e2030;
+  --ctp-crust: #181926;
+  --ctp-surface0: #2a2d3e;
+  --ctp-surface1: #3b3f58;
+  --ctp-surface2: #4a4f6a;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext0: #a5adcb;
+  --ctp-subtext1: #b8c0e0;
+  --ctp-overlay0: #6c7094;
+  --ctp-overlay1: #7b80a8;
+  --ctp-overlay2: #8a90b8;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-green: #a6e3a1;
+  --ctp-mauve: #cba6f7;
+  --ctp-yellow: #f9e2af;
+  --ctp-peach: #fab387;
+  --ctp-red: #f38ba8;
+  --ctp-pink: #f5c2e7;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-rosewater: #f5e0dc;
+  --ctp-maroon: #eba0ac;
+}

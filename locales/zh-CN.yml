@@ -1,0 +1,49 @@
+# 中文 UI 文本
+# 首页标题用中文，其他页面用英文
+
+nav:
+  blog: Blog
+  academic: Academic
+  projects: Projects
+  about: About
+
+home:
+  subtitle: AI · Deep Learning · BCI · Growth
+  latestPosts: 最新文章
+  viewAllBlog: 查看全部 Blog →
+  featuredProjects: 精选项目
+  contributions: 近期贡献
+
+blog:
+  title: Blog
+  all: 全部
+  filterBy: 分类筛选
+  categories:
+    Research: Research
+    Computer Science: Computer Science
+    Life: Life
+    Thoughts: Thoughts
+  prevPage: ← 上一页
+  nextPage: 下一页 →
+  postsCount: '{count} 篇文章'
+
+academic:
+  title: Academic
+  researchExperience: 研究经历
+  papers: 论文阅读
+  skills: 技能
+
+projects:
+  title: Projects
+
+about:
+  title: About
+
+footer:
+  copyright: © {year} Supermilk-Niuru
+  viewOnGitHub: View on GitHub
+
+theme:
+  switchToLight: 切换亮色模式
+  switchToDark: 切换深色模式
+  switchLang: English
